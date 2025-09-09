@@ -1,3 +1,24 @@
+# Prerequisites for Windows 11
+- Make sure that you have WSL2 installed:
+
+```bash
+ wsl --install -d Ubuntu-24.04
+ ```
+
+- Make sure that the Docker Integration for the WSL2 distribution is enabled in Docker Desktop!
+
+- Run all the commands on Windows 11 through a WSL2 shell!
+
+- Make sure that the file `init/replica-init.sh` is stored with `LF` instead of `CRLF`.
+
+# General Prerequisites
+
+Make sure that the file `init/replica-init.sh` can be executed:
+
+```bash
+chmod +x ./init/replica-init.sh
+```
+
 # Start the Docker Compose deployment
 Start the Docker containers, and check their status:
 

@@ -14,7 +14,7 @@ services:
       - ./init/primary-init.sql:/docker-entrypoint-initdb.d/primary-init.sql
     ports:
       - "5441:5432"
-    command: -c hba_file=/etc/postgresql/pg_hba.conf
+    command: -c hba_file=/etc/postgresql/pg_hba.conf -c wal_keep_size=512
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
