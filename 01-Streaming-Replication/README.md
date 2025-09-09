@@ -32,7 +32,7 @@ Insert some rows at the current primary replica (`pg1`), and check if the insert
 
 ```bash
 # Some PostgreSQL workload...
-docker exec -it pg1 psql -U postgres -d appdb -c "INSERT INTO testdata (msg) VALUES ('Streaming Replication works!');"
+docker exec -it pg1 psql -U postgres -d appdb -c "INSERT INTO testdata (msg) VALUES ('Streaming Replication works');"
 
 # Check if the inserted data was synchronized
 for c in pg1 pg2 pg3 pg4; do
