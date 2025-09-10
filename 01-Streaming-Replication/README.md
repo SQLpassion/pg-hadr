@@ -121,6 +121,15 @@ docker exec -u postgres -it pg1 pg_ctl reload -D /var/lib/postgresql/data
 docker exec -it pg1 psql -U postgres -d appdb -c "SELECT application_name, sync_state FROM pg_stat_replication;"
 ```
 
+# Enable Delayed Replication
+When we enable Delayed Replication for a given replica, the incoming WAL records are only applied after the milliseonds specified by the setting `recovery_min_apply_delay`.
+```bash
+# Enable Delayed Replication
+docker exec -it pg4 sed -i "s/^#\?recovery_min_apply_delay.*/recovery_min_apply_delay = 60000/" /var/lib/postgresql/data/postgresql.conf
+docker exec -it pg4 grep "recovery_min_apply_delay" /var/lib/postgresql/data/postgresql.conf
+docker exec -u postgres -it pg4 pg_ctl reload -D /var/lib/postgresql/data
+```
+
 # Stop the Docker Compose deployment
 Stop/Remove the Docker containers:
 
